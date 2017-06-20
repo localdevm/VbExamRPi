@@ -5,7 +5,7 @@ import json
 import paho.mqtt.client as mqtt
 
 #Setters
-io.setmode(IO.BCM)
+IO.setmode(IO.BCM)
 
 IO.setup(4, IO.OUT) #Led setup on gpio 4
 IO.setup(17, IO.IN, pull_up_down=IO.PUD_UP) #Led setup on gpio 17
