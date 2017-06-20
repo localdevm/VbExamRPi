@@ -46,7 +46,7 @@ def manual():
 
 def main():
     try:
-        mqttc = mqttc.Client()
+        mqttc = mqtt.Client()
         mqttc.on_message = on_message
         mqttc.manual = manual
         mqttc.connect("127.0.0.1")
