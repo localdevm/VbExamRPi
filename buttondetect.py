@@ -1,26 +1,28 @@
 #Importing libraries
-import RPi.GPIO as io
+import RPi.GPIO as IO
 import time
 
-#pinmode to BCM
-io.setmode(io.BCM)
+#Setters
+IO.setmode(IO.BCM)
 
-io.setup(4, io.out)
-io.setup(17, io.IN, pull_up_down=io.PUD_UP)
+IO.setup(4, IO.OUT) #Led setup on gpio 4
+IO.setup(17, IO.IN, pull_up_down=IO.PUD_UP) #Led setup on gpio 17
 
-io.add_event_detect(17, io.FALLING, bouncetime=200)
+IO.add_event_detect(17, IO.FALLING, bouncetime=200)
 
 def main():
     try:
-        if io.event_detected(17):
-            io.output(4,1)
+        while True:
+            if IO.event_detected(17):
+                IO.output(4, 1)
 
     except KeyboardInterrupt:
         print('Interrupted')
         pass
 
     finally:
-        io.cleanup()
+        IO.cleanup()
 
+#Main seg
 if __name__ == "__main__":
     main()
