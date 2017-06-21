@@ -52,6 +52,7 @@ def manual():
             elif elapsed > 5:
                 #log
                 sendstate = True
+            elapsed = 0
 
     except KeyboardInterrupt:
         pass
