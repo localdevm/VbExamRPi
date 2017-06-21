@@ -35,7 +35,10 @@ def manual():
         if io.event_detected(17):
             pers += 1
             print(pers)
-            
+
+        if io.event_detected(17) is 0:
+            print('tis af')
+
     except KeyboardInterrupt:
         pass
 
