@@ -10,6 +10,7 @@ IO.output(19,0)
 
 led1 = False
 def main():
+    global led1
     try:
         while True:
             if IO.event_detected(26):
