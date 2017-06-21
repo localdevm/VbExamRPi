@@ -51,11 +51,11 @@ def manual():
                 elapsed = end - start
                 print(elapsed)
 
-
                 if elapsed < 5:
                     pers += 1
                     print(pers)
                     tel = False
+
                 elif elapsed > 5:
                     timeStamp = time.strftime("%a, %d %b %Y %H:%M:%S\n")
                     f = open("personLog", "a")
@@ -83,7 +83,7 @@ def main():
             manual()
             mqttc.loop()
 
-            p.ChangeDutyCycle(pers)
+            p.ChangeDutyCycle(pers%10)
 
 
     except KeyboardInterrupt:
