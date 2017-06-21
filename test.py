@@ -15,12 +15,12 @@ def main():
         while True:
             if IO.event_detected(26):
                 if led1 == False:
-                    print('event triggered')
+                    print('LED aan')
                     IO.output(19,1)
                     led1 = True
 
                 elif led1 == True:
-                    print('event triggered')
+                    print('LED uit')
                     IO.output(19,0)
                     led1 = False
 
