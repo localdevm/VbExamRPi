@@ -9,7 +9,7 @@ io.setmode(io.BCM)
 io.setup(17, io.IN, pull_up_down=io.PUD_UP) #Declaring GPIO17
 io.setup(18, io.OUT)
 
-io.add_event_detect(17, io.FALLING, bouncetime=200) #Adding event_detected
+io.add_event_detect(17, io.FALLING, callback=manual, bouncetime=200) #Adding event_detected
 
 pers = 0
 def on_message(mqttc, obj, msg):
@@ -26,18 +26,27 @@ def on_message(mqttc, obj, msg):
     print(msg.payload.decode())
 
 def manual():
-    global pers
+    global pers, start, end
 
     try:
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
 
         if io.input(17):
-            pers += 1
-            print(pers)
-
+            #pers += 1
+            #print(pers)
+            start = time.time()
         if io.input(17) is 0:
             print('tis af')
+            end = time.time()
+            elapsed = end - start
+            print(elapsed)
+            if elapsed < 5:
+                pers += 1
+                print(pers)
+            elif elapsed > 5:
+                #log 
+                sendstate = True
 
     except KeyboardInterrupt:
         pass
