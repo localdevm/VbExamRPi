@@ -11,7 +11,7 @@ io.setup(18, io.OUT)
 
 io.add_event_detect(17, io.FALLING, bouncetime=200) #Adding event_detected
 
-global pers = 0
+pers = 0
 def on_message(mqttc, obj, msg):
     global sendstate
     if msg.payload.decode() == 'send':
