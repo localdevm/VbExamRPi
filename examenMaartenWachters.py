@@ -9,6 +9,8 @@ io.setmode(io.BCM)
 io.setup(17, io.IN, pull_up_down=io.PUD_UP) #Declaring GPIO17
 io.setup(18, io.OUT)
 
+p = io.PWM(18,50)
+p.start
 
 
 pers = 0
@@ -81,11 +83,8 @@ def main():
             manual()
             mqttc.loop()
 
-            for x in range(0, pers):
-                io.output(18,1)
-                time.sleep(1)
-                io.output(18,0)
-                time.sleep(1)
+            p.ChangeDutyCycle(pers)
+
 
     except KeyboardInterrupt:
         print('Shutting down program')
