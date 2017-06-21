@@ -13,6 +13,7 @@ io.setup(18, io.OUT)
 
 pers = 0
 start = time.time()
+tel = False
 
 def on_message(mqttc, obj, msg):
     global sendstate, pers
@@ -28,7 +29,7 @@ def on_message(mqttc, obj, msg):
     print(msg.payload.decode())
 
 def manual():
-    global pers, start, end
+    global pers, start, end, tel
 
     try:
         mqttc = mqtt.Client()
@@ -39,19 +40,24 @@ def manual():
             #pers += 1
             #print(pers)
             start = time.time()
+            tel = True
 
         if io.input(17) is 0:
-            print('tis af')
-            end = time.time()
-            elapsed = end - start
-            print(elapsed)
+            if tel == True:
+                print('tis af')
+                end = time.time()
+                elapsed = end - start
+                print(elapsed)
 
-            if elapsed < 5:
-                pers += 1
-                print(pers)
-            elif elapsed > 5:
-                #log
-                sendstate = True
+
+                if elapsed < 5:
+                    pers += 1
+                    print(pers)
+                    tel = False
+                elif elapsed > 5:
+                    #log
+                    sendstate = True
+                    tel = False
             elapsed = 0
 
     except KeyboardInterrupt:
