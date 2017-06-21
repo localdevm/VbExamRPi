@@ -32,11 +32,11 @@ def manual():
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
 
-        if io.event_detected(17):
+        if io.input(17):
             pers += 1
             print(pers)
 
-        if io.event_detected(17) is 0:
+        if io.input(17) is 0:
             print('tis af')
 
     except KeyboardInterrupt:
