@@ -33,7 +33,7 @@ def manual():
     try:
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
-        io.add_event_detect(17, io.FALLING, callback=manual, bouncetime=200) #Adding event_detected
+        #io.add_event_detect(17, io.FALLING, callback=manual, bouncetime=200) #Adding event_detected
 
         if io.input(17):
             #pers += 1
