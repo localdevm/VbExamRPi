@@ -33,19 +33,8 @@ def manual():
         mqttc.connect("127.0.0.1")
 
         if io.event_detected(17):
-            start = time.time()
-
-        if io.event_detected(17) is 0:
-            end = time.time()
-            elapsed = end - start
-            print(elapsed)
-            if elapsed < 5:
-                pers += 1
-                print(pers)
-            elif elapsed > 5:
-                #Log uw shit
-                sendstate = True
-            elapsed = 0
+            pers += 1
+            print(pers)
             
     except KeyboardInterrupt:
         pass
