@@ -53,7 +53,7 @@ def main():
             mqttc.loop()
 
     except KeyboardInterrupt:
-        print('Shutting program')
+        print('Shutting down program')
         io.cleanup()
 
 if __name__ == "__main__":
