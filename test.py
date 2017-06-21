@@ -15,11 +15,9 @@ def main():
 
                  #do nothing
 
-        except KeyboardInterrupt:
-            print('stopped')
-            pass
-        finally:
-            IO.cleanup()
+     except KeyboardInterrupt:
+         print("Shutting down program and disabling pins")
+         GPIO.cleanup()
 
 if __name__ == "__main__":
     main()
