@@ -81,6 +81,12 @@ def main():
             manual()
             mqttc.loop()
 
+            for x in range(0, pers):
+                io.output(18,1)
+                time.sleep(1)
+                io.output(18,0)
+                time.sleep(1)
+
     except KeyboardInterrupt:
         print('Shutting down program')
         io.cleanup()
