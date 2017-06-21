@@ -13,7 +13,6 @@ io.setup(18, io.OUT)
 
 pers = 0
 start = time.time()
-tellen = False
 
 def on_message(mqttc, obj, msg):
     global sendstate, pers
@@ -29,34 +28,31 @@ def on_message(mqttc, obj, msg):
     print(msg.payload.decode())
 
 def manual():
-    global pers, start, end, tellen
+    global pers, start, end
 
     try:
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
         #io.add_event_detect(17, io.FALLING, callback=manual, bouncetime=200) #Adding event_detected
 
-        if io.event_detected(17):
+        if io.input(17):
             #pers += 1
             #print(pers)
             start = time.time()
-            tellen = True
 
         if io.input(17) is 0:
-            if tellen == True:
-                print('tis af')
-                end = time.time()
-                elapsed = end - start
-                print(elapsed)
+            print('tis af')
+            end = time.time()
+            elapsed = end - start
+            print(elapsed)
 
-                if elapsed < 5:
-                    pers += 1
-                    print(pers)
-                elif elapsed > 5:
-                    #log
-                    sendstate = True
+            if elapsed < 5:
+                pers += 1
+                print(pers)
+            elif elapsed > 5:
+                #log
+                sendstate = True
             elapsed = 0
-            tellen = False
 
     except KeyboardInterrupt:
         pass
