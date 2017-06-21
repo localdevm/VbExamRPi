@@ -12,8 +12,7 @@ def main():
         while True:
             if IO.event_detected(26):
                 print('event triggered')
-
-                 #do nothing
+                IO.output(19,1)
 
     except KeyboardInterrupt:
          print("Shutting down program and disabling pins")
