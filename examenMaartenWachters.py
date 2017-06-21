@@ -32,6 +32,8 @@ def manual():
         if io.event_detected(17):
             pers = pers + 1
             print(pers)
+    except KeyboardInterrupt:
+        pass
 
 def main():
     #global variables
