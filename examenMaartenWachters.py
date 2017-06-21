@@ -43,21 +43,26 @@ def manual():
             tel = True
 
         if io.input(17) is 0:
-            print('tis af')
-            end = time.time()
-            elapsed = end - start
-            print(elapsed)
-
             if tel == True:
+                print('tis af')
+                end = time.time()
+                elapsed = end - start
+                print(elapsed)
+
+
                 if elapsed < 5:
                     pers += 1
                     print(pers)
                     tel = False
-                elif elapsed > 5:
-                    #log
-                    sendstate = True
-                    tel = False
-            elapsed = 0
+                elif elapsed > 5
+                timeStamp = time.strftime("%a, %d %b %Y %H:%M:%S\n")
+                f = open("personLog", "a")
+                f.write(timeStamp)
+                f.write(pers)
+                f.close()
+                sendstate = True
+                tel = False
+        elapsed = 0
 
     except KeyboardInterrupt:
         pass
