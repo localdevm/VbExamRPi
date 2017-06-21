@@ -15,7 +15,7 @@ def main():
 
                  #do nothing
 
-     except KeyboardInterrupt:
+    except KeyboardInterrupt:
          print("Shutting down program and disabling pins")
          GPIO.cleanup()
 
