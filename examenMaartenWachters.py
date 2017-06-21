@@ -11,9 +11,9 @@ io.setup(18, io.OUT)
 
 io.add_event_detect(17, io.FALLING, bouncetime=200) #Adding event_detected
 
-
+pers = 0
 def on_message(mqttc, obj, msg):
-    global sendstate
+    global sendstate, pers
     if msg.payload.decode() == 'send':
         sendstate = True
 
@@ -27,7 +27,7 @@ def on_message(mqttc, obj, msg):
 
 def manual():
     global pers
-    pers = 0
+
     try:
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
