@@ -26,7 +26,7 @@ def on_message(mqttc, obj, msg):
     print(msg.payload.decode())
 
 def manual():
-    global pers
+    global pers = 0
     try:
         mqttc = mqtt.Client()
         mqttc.connect("127.0.0.1")
